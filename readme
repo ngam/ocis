@@ -1,4 +1,4 @@
-OCI (Docker) containers for various various use, available "ocis" here:
+OCI (Docker) containers for various uses, available "ocis" here:
 
 - cgc: ngc tf container + tf ecosystem + jax + netcdf4
 
