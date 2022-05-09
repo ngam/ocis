@@ -4,5 +4,5 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         fluidsynth && \
      rm -rf /var/lib/apt/lists/
 
-RUN python -m pip --disable-pip-version-check --no-cache-dir \
+RUN python -m pip install --disable-pip-version-check --no-cache-dir \
     tensorflow-io
