@@ -1,0 +1,19 @@
+name: dkdf
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'dkdf/*'
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build . --file dkdf/Dockerfile
+  
+  # if_merged: later
