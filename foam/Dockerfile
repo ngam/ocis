@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 
-RUN apt-get update && apt-get install -y --no-install-recommends wget gnupg2
+RUN apt-get update && apt-get install -y --no-install-recommends wget gnupg2 software-properties-common
 
 RUN sh -c "wget -O - https://dl.openfoam.org/gpg.key --no-check-certificate | apt-key add -"
 
