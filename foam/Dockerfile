@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 
-RUN apt-get install wget
+RUN apt-get update && apt-get install wget
 
 RUN sh -c "wget -O - https://dl.openfoam.org/gpg.key | apt-key add -"
 
