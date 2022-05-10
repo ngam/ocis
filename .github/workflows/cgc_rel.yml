@@ -63,4 +63,6 @@ jobs:
           file: cgc/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: ngam/cgc:latest
+          tags: ngam/ocis:cgc
+          cache-from: type=registry,ref=ngam/ocis:cgcbuildcache
+          cache-to: type=registry,ref=ngam/ocis:cgcbuildcache,mode=max
