@@ -1,5 +1,7 @@
 FROM ubuntu:20.04
 
+RUN apt-get install gnupg2
+
 RUN sh -c "wget -O - https://dl.openfoam.org/gpg.key | apt-key add -"
 
 RUN add-apt-repository http://dl.openfoam.org/ubuntu
