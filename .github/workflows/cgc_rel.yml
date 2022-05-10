@@ -51,9 +51,15 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+          images: ghcr.io/cgc
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
           file: cgc/Dockerfile
           push: true
-          tags: ngam/ocis:cgc
+          tags: ghcr.io/ngam/cgc:latest
