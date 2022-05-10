@@ -63,3 +63,5 @@ jobs:
           file: cgc/Dockerfile
           push: true
           tags: ghcr.io/ngam/cgc:latest
+          cache-from: type=registry,ref=ghcr.io/ngam/cgc:buildcache
+          cache-to: type=registry,ref=ghcr.io/ngam/cgc:buildcache,mode=max
