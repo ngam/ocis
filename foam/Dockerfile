@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 
-RUN apt-get install gnupg2
+RUN apt-get install gpgv
 
 RUN sh -c "wget -O - https://dl.openfoam.org/gpg.key | apt-key add -"
 
