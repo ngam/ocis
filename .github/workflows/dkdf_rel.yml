@@ -66,4 +66,4 @@ jobs:
           push: true
           tags: ghcr.io/ngam/dkdf:latest
           cache-from: type=registry,ref=ghcr.io/ngam/dkdf:buildcache
-          cache-to: type=registry,ref=ghcr.io/ngam/dkdfbuildcache,mode=max
+          cache-to: type=registry,ref=ghcr.io/ngam/dkdf:buildcache,mode=max
