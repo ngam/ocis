@@ -64,6 +64,6 @@ jobs:
           file: dkdf/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: ngam/dkdf:latest
-          cache-from: type=registry,ref=ngam/dkdf:buildcache
-          cache-to: type=registry,ref=ngam/dkdf:buildcache,mode=max
+          tags: ngam/ocis:dkdf
+          cache-from: type=registry,ref=ngam/ocis:dkdfbuildcache
+          cache-to: type=registry,ref=ngam/ocis:dkdfbuildcache,mode=max
