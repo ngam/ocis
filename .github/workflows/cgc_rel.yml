@@ -57,7 +57,7 @@ jobs:
         with:
           images: ghcr.io/${{ github.repository }}
           tags: |
-              type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', 'master') }}
+            type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', 'master') }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
@@ -65,3 +65,4 @@ jobs:
           file: cgc/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
