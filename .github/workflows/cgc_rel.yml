@@ -64,5 +64,3 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           push: true
           tags: ngam/cgc:latest
-          cache-from: type=registry,ref=ngam/cgc:buildcache
-          cache-to: type=registry,ref=ngam/cgc:buildcache,mode=max
