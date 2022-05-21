@@ -14,7 +14,7 @@ jobs:
       matrix:
         registry: ["ghcr.io", ""]
         subject: ["cgc", "dkdf"]
-        container: ["pt", "tf", ""]
+        container: ["pt", "tf"]
     runs-on: ubuntu-latest
     permissions:
       contents: read
