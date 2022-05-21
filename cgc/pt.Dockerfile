@@ -6,4 +6,3 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN python -m pip install --disable-pip-version-check --no-cache-dir \
 	netcdf4
-
