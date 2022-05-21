@@ -1,0 +1,21 @@
+name: cgc
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+    strategy:
+      matrix:
+        subject: ["cgc", "dkdf"]
+        container: ["pt", "tf", "jx"]
+        
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build . --file ${{ matrix.subject }}/Dockerfile.{{ matrix.container }}
