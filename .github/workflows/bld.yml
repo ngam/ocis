@@ -51,7 +51,7 @@ jobs:
     strategy:
       matrix:
         subject: ["cgc", "dkdf"]
-        container: ["pt", "tf", "jx"]
+        container: ["pt", "tf"]
   
     runs-on: ubuntu-latest
     permissions:
