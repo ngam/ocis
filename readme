@@ -1,14 +1,14 @@
-OCI (Docker) containers for various uses, available "ocis" here:
+OCI (Docker) containers for various uses, "oci":
 
-- cgc: ngc container + netcdf4
-- dkdf: ngc container + audio-related software
+- cgc
+- dkdf
 
 Frameworks, "fw":
 
-- pt: pytorch
-- tf: tensorflow
+- pt
+- tf
 
-To pull <oci> from above:
+To pull:
 
-- docker pull ngam00/<oci>:<fw> or docker pull ghcr.io/ngam/<oci>:<fw>
-- singularity pull docker://ngam00/<oci>:<fw> or singularity pull docker://ghcr.io/ngam/<oci>:<fw>
+- docker pull ngam00/oci:fw or docker pull ghcr.io/ngam/oci:fw
+- singularity pull docker://ngam00/oci:fw or singularity pull docker://ghcr.io/ngam/oci:fw
