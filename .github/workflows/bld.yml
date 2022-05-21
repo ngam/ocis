@@ -7,6 +7,8 @@ on:
   schedule:
     - cron: '0 0 * * *'
 
+  pull_request:
+    branches: [ main ]
 
 jobs:
 
@@ -36,12 +38,12 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v3
         with:
-          file: cgc/Dockerfile
+          file: ${{ matrix.subject }}/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
-          push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/cgc:latest
-          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/cgc:buildcache
-          cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/cgc:buildcache,mode=max
+          push: ${{ github.ref == 'refs/heads/main' }}
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ matrix.subject }}:latest
+          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/${{ matrix.subject }}:buildcache
+          cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/${{ matrix.subject }}:buildcache,mode=max
 
 
   ghcrrel:
@@ -75,9 +77,9 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v3
         with:
-          file: cgc/Dockerfile
+          file: ${{ matrix.subject }}/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
-          push: true
-          tags: ghcr.io/ngam/cgc:latest
-          cache-from: type=registry,ref=ghcr.io/ngam/cgc:buildcache
-          cache-to: type=registry,ref=ghcr.io/ngam/cgc:buildcache,mode=max
+          push: ${{ github.ref == 'refs/heads/main' }}
+          tags: ghcr.io/ngam/${{ matrix.subject }}:latest
+          cache-from: type=registry,ref=ghcr.io/ngam/${{ matrix.subject }}:buildcache
+          cache-to: type=registry,ref=ghcr.io/ngam/${{ matrix.subject }}:buildcache,mode=max
