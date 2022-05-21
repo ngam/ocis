@@ -3,29 +3,23 @@ name: bld
 on:
   release:
     types: [published]
-
   schedule:
     - cron: '0 0 * * *'
-
   pull_request:
     branches: [ main ]
 
 jobs:
-
   blds:
-
     strategy:
       matrix:
         registry: ["ghcr.io", ""]
         subject: ["cgc", "dkdf"]
         container: ["pt", "tf", ""]
-
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
       id-token: write
-
     steps:
       -
         name: Checkout 
@@ -55,7 +49,6 @@ jobs:
           file: ${{ matrix.subject }}/${{ matrix.container }}.Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: ${{ github.ref == 'refs/heads/main' }}
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ matrix.subject }}:latest-${{ matrix.container }}
-          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/${{ matrix.subject }}:buildcache-${{ matrix.container }}
-          cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/${{ matrix.subject }}:buildcache-${{ matrix.container }},mode=max
-
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ matrix.subject }}:${{ matrix.container }}latest
+          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/${{ matrix.subject }}:buildcache${{ matrix.container }}
+          cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/${{ matrix.subject }}:buildcache${{ matrix.container }},mode=max
