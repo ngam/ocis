@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         subject: ["cgc", "dkdf"]
-        container: ["pt", "tf", "jx"]
+        container: ["tf"]
         
 
     runs-on: ubuntu-latest
