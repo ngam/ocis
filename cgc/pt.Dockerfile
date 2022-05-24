@@ -4,5 +4,5 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         tree && \
      rm -rf /var/lib/apt/lists/
 
-RUN python -m pip install --disable-pip-version-check --no-cache-dir \
+RUN python -m pip install -U --disable-pip-version-check --no-cache-dir \
 	netcdf4
