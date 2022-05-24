@@ -9,7 +9,7 @@ RUN python -m pip install -U --disable-pip-version-check --no-cache-dir \
     -f https://storage.googleapis.com/jax-releases/jax_releases.html
 
 RUN python -m pip install -U --disable-pip-version-check --no-cache-dir \
-    tensorflow-io \
+    tensorflow-io
 
 RUN python -m pip install -U --disable-pip-version-check --no-cache-dir \
 	netcdf4
