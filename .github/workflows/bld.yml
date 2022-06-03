@@ -16,7 +16,7 @@ jobs:
       matrix:
         registry: ["ghcr.io/ngam", "ngam00"]
         subject: ["cgc"]
-        container: ["pt", "tf", "cf"]
+        container: ["pt", "tf",]
     runs-on: ubuntu-latest
     permissions:
       contents: read
