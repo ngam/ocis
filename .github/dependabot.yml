@@ -4,6 +4,10 @@
 # https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
 
 version: 2
+registries:
+  nvcr: # Define access for a private registry
+    type: docker-registry
+    url:  nvcr.io
 updates:
   - package-ecosystem: "github-actions"
     directory: "/"
@@ -28,16 +32,22 @@ updates:
 
   - package-ecosystem: "docker"
     directory: "/"
+    registries:
+      - nvcr
     schedule:
       interval: "daily"
 
   - package-ecosystem: "docker"
     directory: "/*"
+    registries:
+      - nvcr
     schedule:
       interval: "daily"
 
   - package-ecosystem: "docker"
     directory: "/*/*"
+    registries:
+      - nvcr
     schedule:
       interval: "daily"
 
