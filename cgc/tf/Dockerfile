@@ -4,13 +4,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         tree && \
      rm -rf /var/lib/apt/lists/
 
-RUN python -m pip install -U --disable-pip-version-check --no-cache-dir \
-    jax[cuda11_cudnn82] \
-    -f https://storage.googleapis.com/jax-releases/jax_releases.html
+COPY requirements.txt /tmp/pip-tmp/
+RUN pip3 --disable-pip-version-check --no-cache-dir install -r \
+    /tmp/pip-tmp/requirements.txt \
+    && rm -rf /tmp/pip-tmp
 
-RUN python -m pip install -U --disable-pip-version-check --no-cache-dir \
-    tensorflow-io
-
-RUN python -m pip install -U --disable-pip-version-check --no-cache-dir \
-	netcdf4
+COPY ../requirements.txt /tmp/pip-tmp/
+RUN pip3 --disable-pip-version-check --no-cache-dir install -r \
+    /tmp/pip-tmp/requirements.txt \
+    && rm -rf /tmp/pip-tmp
 
