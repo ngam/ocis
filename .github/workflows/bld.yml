@@ -48,7 +48,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v3
         with:
-          file: ${{ matrix.subject }}/${{ matrix.container }}.Dockerfile
+          file: ${{ matrix.subject }}/${{ matrix.container }}/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: ${{ github.ref == 'refs/heads/main' }}
           tags: ${{ matrix.registry }}/${{ matrix.subject }}:${{ matrix.container }}
