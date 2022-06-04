@@ -11,36 +11,20 @@ updates:
       interval: "daily"
 
   - package-ecosystem: "pip"
-    directory: "/"
+    directory: "cgc"
     schedule:
       interval: "daily"
   - package-ecosystem: "pip"
-    directory: "/*"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "pip"
-    directory: "/*/*"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "pip"
-    directory: "/*/*/*"
+    directory: "cgc/tf"
     schedule:
       interval: "daily"
 
-  - package-ecosystem: "docker"
-    directory: "/"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "docker"
-    directory: "/*"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "docker"
-    directory: "/*/*"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "docker"
-    directory: "/*/*/*"
-    schedule:
-      interval: "daily"
 
+  - package-ecosystem: "docker"
+    directory: "cgc/tf"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "docker"
+    directory: "cgc/pt"
+    schedule:
+      interval: "daily"
