@@ -10,5 +10,5 @@ Frameworks, "fw":
 
 Pull:
 
-- docker pull ngam00/oci:fw or docker pull ghcr.io/ngam/oci:fw
-- singularity pull docker://ngam00/oci:fw or singularity pull docker://ghcr.io/ngam/oci:fw
+- docker pull ghcr.io/ngam/oci:fw
+- singularity pull docker://ghcr.io/ngam/oci:fw

@@ -14,9 +14,9 @@ jobs:
   blds:
     strategy:
       matrix:
-        registry: ["ghcr.io/ngam", "ngam00"]
+        registry: ["ghcr.io/ngam"]
         subject: ["cgc"]
-        container: ["pt", "tf",]
+        container: ["pt", "tf"]
     runs-on: ubuntu-latest
     permissions:
       contents: read
