@@ -33,6 +33,10 @@ updates:
     directory: "cgc/pt"
     schedule:
       interval: "daily"
+  - package-ecosystem: "docker"
+    directory: "cgc/cf"
+    schedule:
+      interval: "daily"
 
   - package-ecosystem: "docker"
     directory: "dkdf/tf"
