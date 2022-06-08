@@ -1,0 +1,71 @@
+diff --git a/opt/tensorflow/nvbuild.sh b/nvbuild.sh
+index fb3122b..3a53a58 100755
+--- a/opt/tensorflow/nvbuild.sh
++++ b/nvbuild.sh
+@@ -83,54 +83,9 @@ done
+ THIS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null && pwd)"
+ cd "${THIS_DIR}/tensorflow-source"
+ 
+-if [[ "$TF_CUDA_COMPUTE_CAPABILITIES" == "all" ]]; then
+-  TF_CUDA_COMPUTE_CAPABILITIES="$(${THIS_DIR}/nvarch.sh ${TARGETARCH})"
+-  if [[ $? -ne 0 ]]; then exit 1; fi
+-elif [ "$TF_CUDA_COMPUTE_CAPABILITIES" == "local" ]; then
+-echo DISCOVERING LOCAL COMPUTE CAPABILITIES
+-set +e # Allow errors so that a.out can be cleaned up
+-TF_CUDA_COMPUTE_CAPABILITIES=$( \
+-cat <<EOF | nvcc -x c++ --run -
+-#include <stdio.h>
+-#include <string>
+-#include <set>
+-#include <cuda_runtime.h>
+-#define CK(cmd) do {                    \
+-  cudaError_t r = (cmd);                \
+-  if (r != cudaSuccess) {               \
+-    fprintf(stderr,                     \
+-            "CUDA Runtime error: %s\n", \
+-            cudaGetErrorString(r));     \
+-    exit(EXIT_FAILURE);                 \
+-  }                                     \
+- } while (false)
+-using namespace std;
+-int main() {
+-  int device_count;
+-  CK(cudaGetDeviceCount(&device_count));
+-  set<string> set;
+-  for(int i=0; i<device_count; i++) {
+-    cudaDeviceProp prop;
+-    CK(cudaGetDeviceProperties(&prop, i));
+-    set.insert(to_string(prop.major)+"."+to_string(prop.minor));
+-  }
+-  int nb_printed = 0;
+-  for(string sm: set) {
+-    if (nb_printed > 0) printf(",");
+-    printf("%s", sm.data());
+-    ++nb_printed;
+-  }
+-  printf("\n");
+-}
+-EOF
+-)
+-R=$?
+-rm a.out
+-if [[ "$R" -ne 0 ]]; then
+-  exit 1
+-fi
+-set -e
+-fi
++
++
++export TF_CUDA_COMPUTE_CAPABILITIES=8.0
+ 
+ echo "CUDA COMPUTE: ${TF_CUDA_COMPUTE_CAPABILITIES}"
+ 
+@@ -153,7 +108,7 @@ export TF_NCCL_VERSION=$(echo "${NCCL_VERSION}" | cut -d . -f 1)
+ export TF_TENSORRT_VERSION=$(echo "${TRT_VERSION}" | cut -d . -f 1)
+ export TF_ENABLE_XLA=1
+ export TF_NEED_HDFS=0
+-if [ "${TARGETARCH}" = "amd64" ] ; then export CC_OPT_FLAGS="-march=sandybridge -mtune=broadwell" ; fi
++if [ "${TARGETARCH}" = "amd64" ] ; then export CC_OPT_FLAGS="-march=znver2 -mtune=znver2" ; fi
+ if [ "${TARGETARCH}" = "arm64" ] ; then export CC_OPT_FLAGS="-march=armv8-a" ; fi
+ export TF_USE_CCACHE
+ 
