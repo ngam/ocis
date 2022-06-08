@@ -1,0 +1,7 @@
+diff --git a/opt/tensorflow/nvbuildopts b/nvbuildopts
+index 1b4d1a9..3d96cea 100644
+--- a/opt/tensorflow/nvbuildopts
++++ b/nvbuildopts
+@@ -1 +1 @@
+--c opt --cxxopt=-D_GLIBCXX_USE_CXX11_ABI=0 --java_runtime_version=remotejdk_11
++-c opt --cxxopt=-D_GLIBCXX_USE_CXX11_ABI=0 --java_runtime_version=remotejdk_11 --local_cpu_resources=2 --copt=-march=znver2 --host_copt=-march=znver2 --copt=-mtune=znver2 --host_copt=-mtune=znver2

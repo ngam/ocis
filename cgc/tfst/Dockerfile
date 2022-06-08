@@ -1,6 +1,7 @@
 FROM nvcr.io/nvidia/tensorflow:22.05-tf2-py3
 
 COPY cgc/tfst/build.patch /tmp
+COPY cgc/tfst/nvopts.patch /tmp
 
 WORKDIR /opt/tensorflow
 
@@ -18,6 +19,7 @@ RUN mv addons-0.17.0 tf-addons
 RUN rm -rf tf-addons.tar.gz
 
 RUN patch -p1 < /tmp/build.patch
+RUN patch -p1 < /tmp/nvopts.patch
 
 RUN ./nvbuild.sh
 
