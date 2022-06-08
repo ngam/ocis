@@ -1,5 +1,5 @@
 diff --git a/opt/tensorflow/nvbuild.sh b/nvbuild.sh
-index fb3122b..3a53a58 100755
+index fb3122b..b7137d3 100755
 --- a/opt/tensorflow/nvbuild.sh
 +++ b/nvbuild.sh
 @@ -83,54 +83,9 @@ done
@@ -55,7 +55,7 @@ index fb3122b..3a53a58 100755
 -set -e
 -fi
 +
-+
++export CC_OPT_FLAGS="-Ofast -march=znver2 -mtune=znver2"
 +export TF_CUDA_COMPUTE_CAPABILITIES=8.0
  
  echo "CUDA COMPUTE: ${TF_CUDA_COMPUTE_CAPABILITIES}"
@@ -69,3 +69,11 @@ index fb3122b..3a53a58 100755
  if [ "${TARGETARCH}" = "arm64" ] ; then export CC_OPT_FLAGS="-march=armv8-a" ; fi
  export TF_USE_CCACHE
  
+@@ -262,6 +217,7 @@ pip$PYVER uninstall -y tensorflow
+ 
+ export OUTPUT_DIRS="/tmp/pip /usr/local/lib/tensorflow"
+ export BUILD_OPTS="${THIS_DIR}/nvbuildopts"
++export BUILD_OPTS="${BUILD_OPTS} --local_cpu_resources=2"
+ export IN_CONTAINER="1"
+ export POSTCLEAN
+ export PYVER
