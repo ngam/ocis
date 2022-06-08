@@ -73,7 +73,7 @@ index fb3122b..b7137d3 100755
  
  export OUTPUT_DIRS="/tmp/pip /usr/local/lib/tensorflow"
  export BUILD_OPTS="${THIS_DIR}/nvbuildopts"
-+export BUILD_OPTS="${BUILD_OPTS} --local_cpu_resources=2"
++export BUILD_OPTS="${BUILD_OPTS} --local_cpu_resources=2 --copt=-march=znver2 --host_copt=-march=znver2 --copt=-mtune=znver2 --host_copt=-mtune=znver2"
  export IN_CONTAINER="1"
  export POSTCLEAN
  export PYVER
