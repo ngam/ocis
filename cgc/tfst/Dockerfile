@@ -1,6 +1,6 @@
 FROM nvcr.io/nvidia/tensorflow:22.05-tf2-py3
 
-COPY build.patch /tmp
+COPY cgc/tfst/build.patch /tmp
 
 WORKDIR /opt/tensorflow
 

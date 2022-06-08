@@ -65,7 +65,7 @@ index fb3122b..3a53a58 100755
  export TF_ENABLE_XLA=1
  export TF_NEED_HDFS=0
 -if [ "${TARGETARCH}" = "amd64" ] ; then export CC_OPT_FLAGS="-march=sandybridge -mtune=broadwell" ; fi
-+if [ "${TARGETARCH}" = "amd64" ] ; then export CC_OPT_FLAGS="-march=znver2 -mtune=znver2" ; fi
++if [ "${TARGETARCH}" = "amd64" ] ; then export CC_OPT_FLAGS="-Ofast -march=znver2 -mtune=znver2" ; fi
  if [ "${TARGETARCH}" = "arm64" ] ; then export CC_OPT_FLAGS="-march=armv8-a" ; fi
  export TF_USE_CCACHE
  
