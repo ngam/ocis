@@ -52,5 +52,5 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           push: ${{ github.ref == 'refs/heads/main' }}
           tags: ${{ matrix.registry }}/ocis:${{ matrix.subject }}_${{ matrix.container }}
-          cache-from: type=registry,ref=${{ matrix.registry }}/ocis:${{ matrix.subject }}_buildcache-${{ matrix.container }}
-          cache-to: type=registry,ref=${{ matrix.registry }}/ocis:${{ matrix.subject }}_buildcache-${{ matrix.container }},mode=max
+          # cache-from: type=registry,ref=${{ matrix.registry }}/ocis:${{ matrix.subject }}_buildcache-${{ matrix.container }}
+          # cache-to: type=registry,ref=${{ matrix.registry }}/ocis:${{ matrix.subject }}_buildcache-${{ matrix.container }},mode=max
