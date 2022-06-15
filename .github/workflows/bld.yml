@@ -51,6 +51,6 @@ jobs:
           file: ${{ matrix.subject }}/${{ matrix.container }}/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: ${{ github.ref == 'refs/heads/main' }}
-          tags: ${{ matrix.registry }}/${{ matrix.subject }}:${{ matrix.container }}
-          cache-from: type=registry,ref=${{ matrix.registry }}/${{ matrix.subject }}:buildcache-${{ matrix.container }}
-          cache-to: type=registry,ref=${{ matrix.registry }}/${{ matrix.subject }}:buildcache-${{ matrix.container }},mode=max
+          tags: ${{ matrix.registry }}/ocis:${{ matrix.subject }}_${{ matrix.container }}
+          cache-from: type=registry,ref=${{ matrix.registry }}/ocis:${{ matrix.subject }}_buildcache-${{ matrix.container }}
+          cache-to: type=registry,ref=${{ matrix.registry }}/ocis:${{ matrix.subject }}_buildcache-${{ matrix.container }},mode=max
