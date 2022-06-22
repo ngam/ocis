@@ -11,17 +11,9 @@ updates:
     directory: "cgc"
     schedule:
       interval: "daily"
-  - package-ecosystem: "pip"
-    directory: "cgc/tf"
-    schedule:
-      interval: "daily"
 
   - package-ecosystem: "pip"
     directory: "dkdf"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "pip"
-    directory: "dkdf/tf"
     schedule:
       interval: "daily"
 
