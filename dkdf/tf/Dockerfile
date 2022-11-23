@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/tensorflow:22.10.1-tf2-py3
+FROM nvcr.io/nvidia/tensorflow:22.11-tf2-py3
 
 
 COPY dkdf/tf/requirements.txt /tmp/pip-tmp/
