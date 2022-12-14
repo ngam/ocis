@@ -1,4 +1,4 @@
 -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
-jax[cuda11_cudnn82]==0.3.19
+jax[cuda11_cudnn82]==0.4.1
 jaxlib==0.3.15
 flax==0.6.1
